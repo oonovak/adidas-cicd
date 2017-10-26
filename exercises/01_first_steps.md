@@ -23,14 +23,16 @@ local laptop with `git clone`.
 We'll come back to the code later, but the next step is to get Jenkins up and
 running on the VM. 
 
+
 ---
+
  
 Run
 
 ```
 $ docker run -d -p '8081:8080' -p '50000:50000' -v '/var/run/docker.sock:/var/run/docker.sock' icrosby/jenkins-master:latest
 ```
- 
+
 Create a file named `docker-compose.yml` with the
 following contents:
 
