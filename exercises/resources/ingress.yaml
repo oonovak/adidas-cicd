@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-blue-green
+spec:
+  backend:
+    serviceName: nginx
+    servicePort: 80
+  rules:
+  - host: green-go-webserver.com
+    http:
+      paths:
+      - path: /go
+        backend:
+          serviceName: go-webserver-green
+          servicePort: 80
+  - host: blue-go-webserver.com
+    http:
+      paths:
+      - path: /go
+        backend:
+          serviceName: go-webserver-blue
+          servicePort: 80
+  - host: go-webserver.com
+    http:
+      paths:
+      - path: /go
+        backend:
+          serviceName: go-webserver-blue
+          servicePort: 80

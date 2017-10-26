@@ -1,0 +1,37 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: go-example-webserver-blue
+  labels:
+    name: go-example-webserver-blue
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: go-example-webserver-blue
+    spec:
+      containers:
+        - name: go-example-webserver
+          image: <DOCKER_USER>/go-example-webserver
+          ports:
+            - containerPort: 8080
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: go-example-webserver-green
+  labels:
+    name: go-example-webserver-green
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: go-example-webserver-green
+    spec:
+      containers:
+        - name: go-example-webserver
+          image: <DOCKER_USER>/go-example-webserver
+          ports:
+            - containerPort: 8080
